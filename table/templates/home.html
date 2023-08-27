@@ -1,0 +1,89 @@
+<!--{% extends 'base.html' %}-->
+
+
+<!--&lt;!&ndash; NAVBAR CONTENT &ndash;&gt;-->
+
+<!--{% block navbar-content %}-->
+
+<!--<i style="color: lightblue;" class="fas fa-user-alt"> </i> &nbsp;&nbsp; Журнал Вывода-->
+
+<!--{% endblock navbar-content %}-->
+
+
+
+<!--&lt;!&ndash; PAGE CONTENT &ndash;&gt;-->
+<!--{% block content %}-->
+<!--<div class="container-fluid">-->
+<!--    <br>-->
+<!--    <table class="table table-sm table-bordered table-striped table-hover" id="example" style="text-align: left;">-->
+<!--        <thead class="table-info">-->
+<!--            <tr>-->
+<!--                <th>ID</th>         &lt;!&ndash; 1  &ndash;&gt;-->
+<!--                <th>Название</th>           &lt;!&ndash; 4  &ndash;&gt;-->
+<!--                <th>Дата</th>           &lt;!&ndash; 7  &ndash;&gt;-->
+<!--                <th>Время</th>          &lt;!&ndash; 8  &ndash;&gt;-->
+<!--                <th>Машина</th>         &lt;!&ndash; 6  &ndash;&gt;-->
+<!--                <th>Состояние</th>          &lt;!&ndash; 10  &ndash;&gt;-->
+<!--                <th>Вывел</th>          &lt;!&ndash; 11  &ndash;&gt;-->
+<!--                <th>Готовность</th>         &lt;!&ndash; 12  &ndash;&gt;-->
+<!--            </tr>-->
+<!--        </thead>-->
+<!--        &lt;!&ndash;    DATA FROM BACKEND    &ndash;&gt;-->
+<!--        {% for task in task_list %}-->
+
+<!--        <tr class="text-nowrap">-->
+<!--            <td>{{ task.id }}</td>                          &lt;!&ndash; 1  &ndash;&gt;-->
+<!--            <td>{{ task.file_name }}</td>                       &lt;!&ndash; 4  &ndash;&gt;-->
+<!--            <td>{{ task.add_data }}</td>                        &lt;!&ndash; 7  &ndash;&gt;-->
+<!--            <td>{{ task.add_time }}</td>                        &lt;!&ndash; 8  &ndash;&gt;-->
+<!--            <td>{{ task.equipment }}</td>                       &lt;!&ndash; 6  &ndash;&gt;-->
+<!--            <td>-->
+<!--              {% if task.stage == 'UNREADY' %}-->
+<!--              <button class="btn btn-sm btn-primary text-center ready-button" data-task-id="{{ task.id }}">Готов</button>-->
+<!--              {% else %}-->
+<!--              <button class="btn btn-sm btn-secondary text-center" disabled>Готов</button>-->
+<!--              {% endif %}-->
+<!--            </td>-->
+<!--            <td>{{ task.operator }}</td>                        &lt;!&ndash; 11  &ndash;&gt;-->
+<!--            <td>{{ task.ready_datatime }}</td>                      &lt;!&ndash; 12  &ndash;&gt;-->
+<!--        </tr>-->
+<!--        {% endfor %}-->
+<!--    </table>-->
+
+
+<!--</div>  &lt;!&ndash; END // CONTAINER &ndash;&gt;-->
+
+<!--<script>-->
+<!--    // Обработчик нажатия на кнопку "Готов"-->
+<!--    $(".ready-button").click(function() {-->
+<!--        var taskId = $(this).data("task-id");-->
+
+<!--        // Отправка AJAX запроса-->
+<!--        $.ajax({-->
+<!--            url: "/update_task_status/",-->
+<!--            type: "POST",-->
+<!--            data: {-->
+<!--                task_id: taskId,-->
+<!--                status: "Готов"-->
+<!--            },-->
+<!--            success: function(response) {-->
+<!--                // Обновление данных на странице-->
+<!--                // Ваш код обновления данных-->
+<!--            },-->
+<!--            error: function(xhr, status, error) {-->
+<!--                // Обработка ошибки-->
+<!--                console.log(error);-->
+<!--            }-->
+<!--        });-->
+<!--    });-->
+<!--</script>-->
+
+
+<!--<br><br><br><br>-->
+<!--{% endblock content %}-->
+
+
+{% extends 'base.html' %}
+
+
+
